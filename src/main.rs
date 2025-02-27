@@ -35,7 +35,7 @@ fn main() {
                     for ll in LinesWithEndings::from(&cmd) {
                         let ranges: Vec<(Style, &str)> = h.highlight_line(ll, &ps).unwrap();
                         let escaped = as_24_bit_terminal_escaped(&ranges[..], false);
-                        let res = writeln!(stdout, "\x1b[38;2;{};{};{}m{}\x1b[0m\t{}", 70, 70, 90, num, escaped);
+                        let res = writeln!(stdout, "\x1b[38;2;{};{};{}m{}\x1b[0m\t{}", 90, 90, 90, num, escaped);
                         if let Err(_) = res {
                             process::exit(1);
                         }
