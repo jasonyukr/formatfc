@@ -10,7 +10,7 @@ use syntect::util::{as_24_bit_terminal_escaped, LinesWithEndings};
 fn main() {
     let re = Regex::new(r"^([\s\d]+)\s+(.*)$").unwrap();
     let mut stdout = io::stdout();
-    let mut seen_lines = HashSet::new();
+//    let mut seen_lines = HashSet::new();
 
     // Load the syntax set and theme set
     let ps = SyntaxSet::load_defaults_newlines();
@@ -29,7 +29,7 @@ fn main() {
                 let num = captures.get(1).map_or("", |m| m.as_str()).trim();
                 let cmd = captures.get(2).map_or("", |m| m.as_str()).trim();
 
-                if seen_lines.insert(cmd.to_string()) {
+//                if seen_lines.insert(cmd.to_string()) {
                     let mut h = HighlightLines::new(syntax, &theme); // reset the highlight instance for each line
 
                     for ll in LinesWithEndings::from(&cmd) {
@@ -40,7 +40,7 @@ fn main() {
                             process::exit(1);
                         }
                     }
-                }
+//                }
             }
         }
     }
